@@ -1,9 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <beans xmlns="http://www.springframework.org/schema/beans"
        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:context="http://www.springframework.org/schema/context"
        xsi:schemaLocation="http://www.springframework.org/schema/beans
-    http://www.springframework.org/schema/beans/spring-beans.xsd">
-
+    http://www.springframework.org/schema/beans/spring-beans.xsd http://www.springframework.org/schema/context https://www.springframework.org/schema/context/spring-context.xsd">
+    <context:property-placeholder location="classpath:sport.properties"/>
     <!-- Define your beans here -->
     <bean id="myFortuneService" class="com.coach.spring.HappyFortuneService"/>
     <bean id="tennisCoach" class="com.coach.spring.TennisCoach"/>
@@ -14,11 +15,16 @@
     <bean id="myCricketCoach" class="com.coach.spring.CricketCoach">
         <!-- Setter Injection -->
         <property name="fortuneService" ref="myFortuneService"/>
-        <!-- Literal value injection -->
-        <property name="emailAddress" value="cricketcoach@gmail.com"/>
-        <property name="team" value="Cricket Team"/>
+        <!-- Property value injection -->
+        <property name="emailAddress" value="${foo.email}"/>
+        <property name="team" value="${foo.team}"/>
 
     </bean>
+    <bean id="randomFortune" class="com.coach.spring.RandomFortuneService"/>
+    <bean id="soccerCoach" class="com.coach.spring.SoccerCoach">
+        <constructor-arg ref="randomFortune"/>
+    </bean>
+
 </beans>
 
 

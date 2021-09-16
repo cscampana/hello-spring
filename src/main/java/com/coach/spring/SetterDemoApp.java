@@ -15,6 +15,9 @@ public class SetterDemoApp {
         System.out.println(theCoach.getEmailAddress());
         System.out.println(theCoach.getTeam());
 
+        // Random Fortune exercise
+        SoccerCoach soccerCoach = context.getBean("soccerCoach", SoccerCoach.class);
+        System.out.println(soccerCoach.getDailyFortune());
         context.close();
     }
 }
