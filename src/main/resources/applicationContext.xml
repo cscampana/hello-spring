@@ -5,11 +5,12 @@
     http://www.springframework.org/schema/beans/spring-beans.xsd">
 
     <!-- Define your beans here -->
+    <bean id="myFortune" class="com.coach.spring.HappyFortuneService"/>
+    <bean id="tennisCoach" class="com.coach.spring.TennisCoach"/>
     <bean id="myCoach" class="com.coach.spring.BaseballCoach">
+    <!-- Constructor injection -->
+        <constructor-arg ref="myFortune"/>
     </bean>
-    <bean id="tennisCoach" class="com.coach.spring.TennisCoach"></bean>
-
-
 </beans>
 
 
