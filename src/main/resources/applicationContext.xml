@@ -14,6 +14,10 @@
     <bean id="myCricketCoach" class="com.coach.spring.CricketCoach">
         <!-- Setter Injection -->
         <property name="fortuneService" ref="myFortuneService"/>
+        <!-- Literal value injection -->
+        <property name="emailAddress" value="cricketcoach@gmail.com"/>
+        <property name="team" value="Cricket Team"/>
+
     </bean>
 </beans>
 
